@@ -52,7 +52,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'flex-end',
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
   ...theme.mixins.toolbar,
 }));
 
@@ -64,16 +63,16 @@ const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
 })<AppBarProps>(({ theme, open }) => ({
   zIndex: theme.zIndex.drawer + 1,
-  // marginLeft: drawerWidth,
-  width: `calc(100% - ${100}px)`,
-  backgroundColor: theme.palette.primary.main, // Always green
+  marginRight: 40, // Add a small margin on the right side
+  width: `calc(100% - ${120}px )`, // Adjust width for margin
+  backgroundColor: theme.palette.primary.main,
   transition: theme.transitions.create(['width', 'margin'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
   ...(open && {
     marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
+    width: `calc(100% - ${drawerWidth}px - 35px)`,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
@@ -108,8 +107,15 @@ const Footer = styled('footer')(({ theme }) => ({
   color: theme.palette.text.secondary,
   position: 'sticky',
   bottom: 0,
-  marginLeft: 100,
-  width: `calc(100% - ${180}px)`,
+  marginLeft: drawerWidth / 2,
+  width: `calc(100% - ${drawerWidth}px)`,
+}));
+
+const ContentBox = styled(Box)(({ theme }) => ({
+  margin: `${theme.spacing(5)} ${theme.spacing(2)} ${theme.spacing(3)} ${theme.spacing(7)}`,
+  padding: theme.spacing(2),
+  backgroundColor: theme.palette.mode === 'light' ? theme.palette.grey[200] : theme.palette.grey[800], // Semi-light for light mode, semi-dark for dark mode
+  borderRadius: theme.shape.borderRadius,
 }));
 
 const Layout: React.FC<{ children: React.ReactNode, toggleTheme: () => void, isDarkMode: boolean }> = ({ children, toggleTheme, isDarkMode }) => {
@@ -144,6 +150,7 @@ const Layout: React.FC<{ children: React.ReactNode, toggleTheme: () => void, isD
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
@@ -232,7 +239,9 @@ const Layout: React.FC<{ children: React.ReactNode, toggleTheme: () => void, isD
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3, overflow: 'auto', position: 'relative' }}>
-        {children}
+      <ContentBox>
+          {children}
+        </ContentBox>
         <Fab 
           color="primary" 
           aria-label="scroll" 
