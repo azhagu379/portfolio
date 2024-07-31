@@ -1,9 +1,9 @@
 import { createTheme } from '@mui/material/styles';
 
 const green = {
-  light: '#66bb6a', // Light green
-  main: '#388e3c',  // Main green
-  dark: '#00701a',  // Dark green
+  light: '#ff5722', // Light green
+  main: '#ff3d00',  // Main green
+  dark: '#f4511e',  // Dark green
   contrastText: '#fff', // White text color
 };
 
@@ -13,9 +13,13 @@ export const lightTheme = createTheme({
     primary: green,
     secondary: {
       light: '#ff7961',
-      main: '#f44336',
+      main: '#e0e0e0',
       dark: '#ba000d',
       contrastText: '#000',
+    },
+    background: {
+      default: '#ffffff',
+      paper: '#ff5722',
     },
   },
 });
@@ -26,9 +30,13 @@ export const darkTheme = createTheme({
     primary: green,
     secondary: {
       light: '#ff7961',
-      main: '#f44336',
+      main: '#e0e0e0',
       dark: '#ba000d',
       contrastText: '#000',
+    },
+    background: {
+      default: '#303030', // Semi-dark background color
+      paper: '#ff5722',   // Semi-dark paper color
     },
   },
 });

@@ -15,16 +15,19 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
+import Fab from '@mui/material/Fab';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { ListItemText } from '@mui/material';
 
 const drawerWidth = 240;
 
 const openedMixin = (theme: Theme): CSSObject => ({
-  width: drawerWidth,
+  width: drawerWidth - 20,
   transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,
@@ -61,6 +64,8 @@ const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
 })<AppBarProps>(({ theme, open }) => ({
   zIndex: theme.zIndex.drawer + 1,
+  // marginLeft: drawerWidth,
+  width: `calc(100% - ${100}px)`,
   backgroundColor: theme.palette.primary.main, // Always green
   transition: theme.transitions.create(['width', 'margin'], {
     easing: theme.transitions.easing.sharp,
@@ -92,6 +97,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     }),
   }),
 );
+
 const Footer = styled('footer')(({ theme }) => ({
   display: 'flex',
   justifyContent: 'center',
@@ -100,34 +106,47 @@ const Footer = styled('footer')(({ theme }) => ({
   borderTop: `1px solid ${theme.palette.divider}`,
   backgroundColor: theme.palette.background.paper,
   color: theme.palette.text.secondary,
-  marginTop: 'auto', // Ensure the footer is pushed to the bottom
+  position: 'sticky',
+  bottom: 0,
+  marginLeft: 100,
+  width: `calc(100% - ${180}px)`,
 }));
 
 const Layout: React.FC<{ children: React.ReactNode, toggleTheme: () => void, isDarkMode: boolean }> = ({ children, toggleTheme, isDarkMode }) => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [showScrollButton, setShowScrollButton] = React.useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
   };
 
   const handleDrawerClose = () => {
-    setOpen(false);
+    setOpen(!open);
   };
-  const Footer = styled('footer')(({ theme }) => ({
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: theme.spacing(2),
-    borderTop: `1px solid ${theme.palette.divider}`,
-    backgroundColor: theme.palette.background.paper,
-    color: theme.palette.text.secondary,
-    marginTop: 'auto', // Ensure the footer is pushed to the bottom
-    width: '100%', // Ensure it spans the full width
-  }));
+
+  const handleScroll = () => {
+    const scrolled = document.documentElement.scrollTop;
+    setShowScrollButton(scrolled > 300);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const scrollToBottom = () => {
+    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+  };
+
+  React.useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
@@ -141,24 +160,24 @@ const Layout: React.FC<{ children: React.ReactNode, toggleTheme: () => void, isD
               ...(open && { display: 'none' }),
             }}
           >
-            <MenuIcon  />
+            <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            PortFolio
+          <Typography align='center' variant="h6" noWrap component="div">
+            Portfolio
           </Typography>
           <IconButton
             color="inherit"
             onClick={toggleTheme}
             sx={{ marginLeft: 'auto' }}
           >
-            {isDarkMode ? <Brightness7Icon  /> : <Brightness4Icon  />}
+            {isDarkMode ? <Brightness7Icon /> : <Brightness4Icon />}
           </IconButton>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon sx={{ color: theme.palette.primary.main }} /> : <ChevronLeftIcon sx={{ color: theme.palette.primary.main }} />}
+          <IconButton onClick={handleDrawerClose} >
+            {!open ? <ChevronRightIcon sx={{ color: theme.palette.secondary.main }} /> : <ChevronLeftIcon sx={{ color: theme.palette.secondary.main }} />}
           </IconButton>
         </DrawerHeader>
         <Divider />
@@ -179,7 +198,7 @@ const Layout: React.FC<{ children: React.ReactNode, toggleTheme: () => void, isD
                     justifyContent: 'center',
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon sx={{ color: theme.palette.primary.main }} /> : <MailIcon sx={{ color: theme.palette.primary.main }} />}
+                  {index % 2 === 0 ? <InboxIcon sx={{ color: theme.palette.secondary.main }} /> : <MailIcon sx={{ color: theme.palette.secondary.main }} />}
                 </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
@@ -204,7 +223,7 @@ const Layout: React.FC<{ children: React.ReactNode, toggleTheme: () => void, isD
                     justifyContent: 'center',
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon sx={{ color: theme.palette.primary.main }} /> : <MailIcon sx={{ color: theme.palette.primary.main }} />}
+                  {index % 2 === 0 ? <InboxIcon sx={{ color: theme.palette.secondary.main }} /> : <MailIcon sx={{ color: theme.palette.secondary.main }} />}
                 </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
@@ -212,16 +231,22 @@ const Layout: React.FC<{ children: React.ReactNode, toggleTheme: () => void, isD
           ))}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
+      <Box component="main" sx={{ flexGrow: 1, p: 3, overflow: 'auto', position: 'relative' }}>
         {children}
-      </Box> 
-      {/* <Footer>
-      <Typography variant="body2">
-        © 2024 Your Company. All rights reserved.
-      </Typography>
-    </Footer> */}
-
+        <Fab 
+          color="primary" 
+          aria-label="scroll" 
+          onClick={showScrollButton ? scrollToTop : scrollToBottom}
+          sx={{ position: 'fixed', bottom: 16, right: 16 }}
+        >
+          {showScrollButton ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+        </Fab>
+      </Box>
+      <Footer>
+        <Typography variant="body2">
+          &copy; {new Date().getFullYear()} Your Name. All rights reserved.
+        </Typography>
+      </Footer>
     </Box>
   );
 };

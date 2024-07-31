@@ -1,15 +1,99 @@
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import { useTheme } from '@mui/material/styles';
 
 export default function Home() {
+  const theme = useTheme();
+
   return (
-    <>
-      <Typography paragraph>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien faucibus et molestie ac.
-      </Typography>
-      <Typography paragraph>
-        Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam ultrices sagittis orci a.
-      </Typography>
-    </>
+    <Container maxWidth="lg">
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: '100vh',
+          backgroundImage: `url(/path/to/your/background.jpg)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          padding: '20px',
+          color: theme.palette.text.primary,
+        }}
+      >
+        <Typography variant="h2" component="h1" gutterBottom>
+          Welcome to My Portfolio
+        </Typography>
+        <Typography variant="h5" component="h2" gutterBottom>
+          I'm a passionate Software Engineer with expertise in Java, HTML, CSS, JavaScript, React.js, Next.js, and Spring Boot.
+        </Typography>
+      </Box>
+
+      <Box sx={{ padding: '40px 0' }}>
+        <Typography variant="h4" component="h3" gutterBottom>
+          About Me
+        </Typography>
+        <Typography paragraph>
+          With 2 years of experience in the software development industry, I specialize in creating efficient and scalable web applications. My passion for technology drives me to continuously learn and adapt to new challenges.
+        </Typography>
+      </Box>
+
+      <Grid container spacing={4} id="projects">
+        <Grid item xs={12} sm={6} md={4}>
+          <Box
+            sx={{
+              backgroundColor: theme.palette.background.paper,
+              padding: '20px',
+              borderRadius: '8px',
+              textAlign: 'center',
+            }}
+          >
+            <Typography variant="h6" component="h4" gutterBottom>
+              Project 1
+            </Typography>
+            <Typography paragraph>
+              Description of Project 1.
+            </Typography>
+          </Box>
+        </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          <Box
+            sx={{
+              backgroundColor: theme.palette.background.paper,
+              padding: '20px',
+              borderRadius: '8px',
+              textAlign: 'center',
+            }}
+          >
+            <Typography variant="h6" component="h4" gutterBottom>
+              Project 2
+            </Typography>
+            <Typography paragraph>
+              Description of Project 2.
+            </Typography>
+          </Box>
+        </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          <Box
+            sx={{
+              backgroundColor: theme.palette.background.paper,
+              padding: '20px',
+              borderRadius: '8px',
+              textAlign: 'center',
+            }}
+          >
+            <Typography variant="h6" component="h4" gutterBottom>
+              Project 3
+            </Typography>
+            <Typography paragraph>
+              Description of Project 3.
+            </Typography>
+          </Box>
+        </Grid>
+      </Grid>
+    </Container>
   );
 }

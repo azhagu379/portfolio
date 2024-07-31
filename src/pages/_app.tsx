@@ -6,7 +6,7 @@ import Layout from '../components/Layout';
 import type { AppProps } from 'next/app';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [isDarkMode, setIsDarkMode] = React.useState(true);
+  const [isDarkMode, setIsDarkMode] = React.useState(false);
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
