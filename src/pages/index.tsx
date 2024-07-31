@@ -28,7 +28,7 @@ export default function Home() {
           Welcome to My Portfolio
         </Typography>
         <Typography variant="h5" component="h2" gutterBottom>
-          I'm a passionate Software Engineer with expertise in Java, HTML, CSS, JavaScript, React.js, Next.js, and Spring Boot.
+          Im a passionate Software Engineer with expertise in Java, HTML, CSS, JavaScript, React.js, Next.js, and Spring Boot.
         </Typography>
       </Box>
 
