@@ -9,7 +9,7 @@ export default function Home() {
   const theme = useTheme();
 
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" >
       <Box
         sx={{
           display: 'flex',
@@ -21,14 +21,14 @@ export default function Home() {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           padding: '20px',
-          color: theme.palette.text.primary,
+          // backgroundColor: theme.palette.background.paper,
         }}
       >
         <Typography variant="h2" component="h1" gutterBottom>
           Welcome to My Portfolio
         </Typography>
         <Typography variant="h5" component="h2" gutterBottom>
-          Im a passionate Software Engineer with expertise in Java, HTML, CSS, JavaScript, React.js, Next.js, and Spring Boot.
+          I&apos;m a passionate Software Engineer with expertise in Java, HTML, CSS, JavaScript, React.js, Next.js, and Spring Boot.
         </Typography>
       </Box>
 
@@ -49,6 +49,7 @@ export default function Home() {
               padding: '20px',
               borderRadius: '8px',
               textAlign: 'center',
+              border: `2px solid ${theme.palette.secondary.main}`, // Yellow outline for the box
             }}
           >
             <Typography variant="h6" component="h4" gutterBottom>
@@ -66,6 +67,7 @@ export default function Home() {
               padding: '20px',
               borderRadius: '8px',
               textAlign: 'center',
+              border: `2px solid ${theme.palette.secondary.main}`, // Yellow outline for the box
             }}
           >
             <Typography variant="h6" component="h4" gutterBottom>
@@ -83,6 +85,7 @@ export default function Home() {
               padding: '20px',
               borderRadius: '8px',
               textAlign: 'center',
+              border: `2px solid ${theme.palette.secondary.main}`, // Yellow outline for the box
             }}
           >
             <Typography variant="h6" component="h4" gutterBottom>

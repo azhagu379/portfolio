@@ -19,7 +19,7 @@ interface AppBarProps extends MuiAppBarProps {
 
 const Footer = styled('footer', {
   shouldForwardProp: (prop) => prop !== 'open',
-})<AppBarProps>(({ theme,open }) => ({
+})<AppBarProps>(({ theme, open }) => ({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
@@ -33,9 +33,8 @@ const Footer = styled('footer', {
   width: `calc(100% - ${drawerWidth}px)`,
   ...(open && {
     marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth+100}px)`,
+    width: `calc(100% - ${drawerWidth + 100}px)`,
   }),
-
 }));
 
 const ContentBox = styled(Box, {
@@ -43,10 +42,10 @@ const ContentBox = styled(Box, {
 })<AppBarProps>(({ theme, open }) => ({
   margin: `${theme.spacing(5)} ${theme.spacing(2)} ${theme.spacing(3)} ${theme.spacing(7)}`,
   padding: theme.spacing(2),
-  backgroundColor: theme.palette.mode === 'light' ? theme.palette.grey[200] : theme.palette.grey[800], // Semi-light for light mode, semi-dark for dark mode
+  backgroundColor: theme.palette.mode === 'light' ? theme.palette.background.paper : theme.palette.grey[800], // Branding green for light mode, semi-dark for dark mode
  
   ...(open && {
-    marginLeft: drawerWidth-30,
+    marginLeft: drawerWidth - 30,
   }),
 }));
 
@@ -82,7 +81,6 @@ const Layout: React.FC<{ children: React.ReactNode, toggleTheme: () => void, isD
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>

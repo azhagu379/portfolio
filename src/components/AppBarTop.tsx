@@ -1,5 +1,6 @@
+// AppBarTop.js
 import * as React from 'react';
-import {  Toolbar, IconButton, Typography, styled } from '@mui/material';
+import { Toolbar, IconButton, Typography, styled } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
@@ -10,33 +11,33 @@ interface CustomAppBarProps {
   handleDrawerOpen: () => void;
   toggleTheme: () => void;
   isDarkMode: boolean;
-  
 }
+
 const drawerWidth = 240;
 interface AppBarProps extends MuiAppBarProps {
-    open?: boolean;
-  }
+  open?: boolean;
+}
 
 const AppBar = styled(MuiAppBar, {
-    shouldForwardProp: (prop) => prop !== 'open',
-  })<AppBarProps>(({ theme, open }) => ({
-    zIndex: theme.zIndex.drawer + 1,
-    marginRight: 40, // Add a small margin on the right side
-    width: `calc(100% - ${120}px )`, // Adjust width for margin
-    backgroundColor: theme.palette.primary.main,
-    transition: theme.transitions.create(['width', 'margin'], {
+  shouldForwardProp: (prop) => prop !== 'open',
+})<AppBarProps>(({ theme, open }) => ({
+  zIndex: theme.zIndex.drawer + 1,
+  marginRight: 40, // Add a small margin on the right side
+  width: `calc(100% - ${120}px )`, // Adjust width for margin
+  backgroundColor: theme.palette.primary.main, // Use secondary color when open
+  transition: theme.transitions.create(['width', 'margin', 'background-color'], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  ...(open && {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px - 35px)`,
+    transition: theme.transitions.create(['width', 'margin', 'background-color'], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
+      duration: theme.transitions.duration.enteringScreen,
     }),
-    ...(open && {
-      marginLeft: drawerWidth,
-      width: `calc(100% - ${drawerWidth}px - 35px)`,
-      transition: theme.transitions.create(['width', 'margin'], {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-    }),
-  }));
+  }),
+}));
 
 const AppBarTop: React.FC<CustomAppBarProps> = ({ open, handleDrawerOpen, toggleTheme, isDarkMode }) => {
   return (
@@ -62,7 +63,7 @@ const AppBarTop: React.FC<CustomAppBarProps> = ({ open, handleDrawerOpen, toggle
           onClick={toggleTheme}
           sx={{ marginLeft: 'auto' }}
         >
-          {isDarkMode ? <Brightness7Icon /> : <Brightness4Icon />}
+          {isDarkMode ? <Brightness7Icon /> : <Brightness4Icon  />}
         </IconButton>
       </Toolbar>
     </AppBar>
