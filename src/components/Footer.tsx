@@ -38,10 +38,10 @@ const Footer = () => {
   return (
     <FooterBox>
       <Typography variant="body2" align="center" gutterBottom>
-        &copy; {new Date().getFullYear()} [Your Name]. All rights reserved.
+        &copy; {new Date().getFullYear()} Azhagu-swe. All rights reserved.
       </Typography>
       <Typography variant="body2" align="center">
-        Crafted with ❤️ by [Your Name]
+        Crafted with ❤️ by Azhagu-swe
       </Typography>
       <SocialMediaLinks>
         <Link href="https://github.com/yourusername" passHref>

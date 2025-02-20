@@ -4,6 +4,7 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
+import { CustomizeBox } from '@/components/style/CustomizeBox';
 
 export default function Home() {
   const theme = useTheme();
@@ -43,58 +44,33 @@ export default function Home() {
 
       <Grid container spacing={4} id="projects">
         <Grid item xs={12} sm={6} md={4}>
-          <Box
-            sx={{
-              backgroundColor: theme.palette.background.paper,
-              padding: '20px',
-              borderRadius: '8px',
-              textAlign: 'center',
-              border: `2px solid ${theme.palette.secondary.main}`, // Yellow outline for the box
-            }}
-          >
+          <CustomizeBox>
             <Typography variant="h6" component="h4" gutterBottom>
               Project 1
             </Typography>
             <Typography paragraph>
               Description of Project 1.
             </Typography>
-          </Box>
-        </Grid>
+            </CustomizeBox>        </Grid>
         <Grid item xs={12} sm={6} md={4}>
-          <Box
-            sx={{
-              backgroundColor: theme.palette.background.paper,
-              padding: '20px',
-              borderRadius: '8px',
-              textAlign: 'center',
-              border: `2px solid ${theme.palette.secondary.main}`, // Yellow outline for the box
-            }}
-          >
+          <CustomizeBox>
             <Typography variant="h6" component="h4" gutterBottom>
               Project 2
             </Typography>
             <Typography paragraph>
               Description of Project 2.
             </Typography>
-          </Box>
+          </CustomizeBox>
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
-          <Box
-            sx={{
-              backgroundColor: theme.palette.background.paper,
-              padding: '20px',
-              borderRadius: '8px',
-              textAlign: 'center',
-              border: `2px solid ${theme.palette.secondary.main}`, // Yellow outline for the box
-            }}
-          >
+          <CustomizeBox>
             <Typography variant="h6" component="h4" gutterBottom>
               Project 3
             </Typography>
             <Typography paragraph>
               Description of Project 3.
             </Typography>
-          </Box>
+          </CustomizeBox>
         </Grid>
       </Grid>
     </Container>
