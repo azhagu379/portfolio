@@ -10,6 +10,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Icon } from '@iconify/react';
 import SideDrawer from './SideDrawer';
 import AppBarTop from './AppBarTop';
+import Footer from './Footer';
 
 const drawerWidth = 240;
 
@@ -17,25 +18,25 @@ interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
 }
 
-const Footer = styled('footer', {
-  shouldForwardProp: (prop) => prop !== 'open',
-})<AppBarProps>(({ theme, open }) => ({
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  padding: theme.spacing(2),
-  borderTop: `1px solid ${theme.palette.divider}`,
-  backgroundColor: theme.palette.background.paper,
-  color: theme.palette.text.secondary,
-  position: 'sticky',
-  bottom: 0,
-  marginLeft: drawerWidth / 2,
-  width: `calc(100% - ${drawerWidth}px)`,
-  ...(open && {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth + 100}px)`,
-  }),
-}));
+// const Footer = styled('footer', {
+//   shouldForwardProp: (prop) => prop !== 'open',
+// })<AppBarProps>(({ theme, open }) => ({
+//   display: 'flex',
+//   justifyContent: 'center',
+//   alignItems: 'center',
+//   padding: theme.spacing(2),
+//   borderTop: `1px solid ${theme.palette.divider}`,
+//   backgroundColor: theme.palette.background.paper,
+//   color: theme.palette.text.secondary,
+//   position: 'sticky',
+//   bottom: 0,
+//   marginLeft: drawerWidth / 2,
+//   width: `calc(100% - ${drawerWidth}px)`,
+//   ...(open && {
+//     marginLeft: drawerWidth,
+//     width: `calc(100% - ${drawerWidth + 100}px)`,
+//   }),
+// }));
 
 const ContentBox = styled(Box, {
   shouldForwardProp: (prop) => prop !== 'open',
@@ -100,11 +101,7 @@ const Layout: React.FC<{ children: React.ReactNode, toggleTheme: () => void, isD
           {showScrollButton ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
         </Fab>
       </Box>
-      <Footer open={open}>
-        <Typography variant="body2">
-          &copy; {new Date().getFullYear()} Azhagu-swe. All rights reserved.
-        </Typography>
-      </Footer>
+      <Footer/>
     </Box>
   );
 };
