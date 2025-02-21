@@ -1,9 +1,9 @@
-/** @type {import('next').NextConfig} */
+// next.config.mjs
 const nextConfig = {
-    output: 'export',
-    images: {
-      unoptimized: true, // Required for GitHub Pages
-    },
+    reactStrictMode: true,
+    swcMinify: true,
+    // Add any other configuration options here
   };
-  module.exports = nextConfig;
+  
+  export default nextConfig;
   
