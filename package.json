@@ -13,9 +13,11 @@
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^5.16.5",
     "@mui/material": "^5.16.5",
+    "framer-motion": "^12.4.7",
     "next": "14.2.5",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-simple-typewriter": "^5.0.1"
   },
   "devDependencies": {
     "@iconify/react": "^5.0.2",

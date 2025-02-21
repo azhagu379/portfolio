@@ -44,16 +44,16 @@ const Footer = () => {
         Crafted with ❤️ by Azhagu-swe
       </Typography>
       <SocialMediaLinks>
-        <Link href="https://github.com/yourusername" passHref>
+        <Link href="https://github.com/azhagu-swe" passHref>
           <Icon icon="akar-icons:github-fill" width="24" height="24" />
         </Link>
-        <Link href="https://linkedin.com/in/yourusername" passHref>
+        <Link href="https://linkedin.com/in/azhagu379" passHref>
           <Icon icon="akar-icons:linkedin-box-fill" width="24" height="24" />
         </Link>
-        <Link href="https://twitter.com/yourusername" passHref>
+        <Link href="https://twitter.com/azhagu-swe" passHref>
           <Icon icon="akar-icons:twitter-fill" width="24" height="24" />
         </Link>
-        <Link href="https://instagram.com/yourusername" passHref>
+        <Link href="https://instagram.com/azhagu.dev" passHref>
           <Icon icon="akar-icons:instagram-fill" width="24" height="24" />
         </Link>
       </SocialMediaLinks>

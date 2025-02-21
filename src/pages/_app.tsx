@@ -1,27 +1,28 @@
-import * as React from 'react';
-import { ThemeProvider, createTheme, Theme } from '@mui/material/styles';
+// pages/_app.tsx
+import React from 'react';
 import { CssBaseline } from '@mui/material';
-import { lightTheme, darkTheme } from '../styles/theme';
+import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
+import { ThemeProvider, useThemeContext } from '../context/ThemeContext';
 import Layout from '../components/Layout';
 import type { AppProps } from 'next/app';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  const [isDarkMode, setIsDarkMode] = React.useState(false);
-
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-  };
-
-  const theme: Theme = isDarkMode ? darkTheme : lightTheme;
+const AppContent: React.FC<AppProps> = ({ Component, pageProps }) => {
+  const { theme, toggleTheme, isDarkMode } = useThemeContext();
 
   return (
-    <ThemeProvider theme={theme}>
+    <MuiThemeProvider theme={theme}>
       <CssBaseline />
       <Layout toggleTheme={toggleTheme} isDarkMode={isDarkMode}>
         <Component {...pageProps} />
       </Layout>
+    </MuiThemeProvider>
+  );
+};
+
+export default function MyApp(props: AppProps) {
+  return (
+    <ThemeProvider>
+      <AppContent {...props} />
     </ThemeProvider>
   );
 }
-
-export default MyApp;

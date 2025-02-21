@@ -163,8 +163,9 @@ const SideDrawer: React.FC<SideDrawerProps> = ({ open, handleDrawerClose }) => {
                 px: 2.5,
                 "&:hover .MuiListItemIcon-root": {
                   color: theme.palette.secondary.main, // Change color on hover
+                  transform: 'scale(1.2)', 
                 },
-                transition: "all 0.3s ease", // Smooth hover effect
+                transition: 'color 0.3s, transform 0.3s',  // Smooth hover effect
               }}>
               <ListItemIcon
                 className="MuiListItemIcon-root"
@@ -173,8 +174,8 @@ const SideDrawer: React.FC<SideDrawerProps> = ({ open, handleDrawerClose }) => {
                   mr: open ? 3 : "auto",
                   justifyContent: "center",
                   color: theme.palette.primary.main, // Default color
-                  transition: "color 0.3s ease", // Smooth color transition
-                }}>
+                  transition: 'color 0.3s, transform 0.3s', 
+                   }}>
                 {item.icon}
               </ListItemIcon>
               <ListItemText
@@ -198,8 +199,9 @@ const SideDrawer: React.FC<SideDrawerProps> = ({ open, handleDrawerClose }) => {
                 px: 2.5,
                 "&:hover .MuiListItemIcon-root": {
                   color: theme.palette.secondary.main, // Change color on hover
+                  transform: 'scale(1.2)', 
                 },
-                transition: "all 0.3s ease", // Smooth hover effect
+                transition: 'color 0.3s, transform 0.3s',  // Smooth hover effect
               }}>
               <ListItemIcon
                 className="MuiListItemIcon-root"
@@ -208,7 +210,7 @@ const SideDrawer: React.FC<SideDrawerProps> = ({ open, handleDrawerClose }) => {
                   mr: open ? 3 : "auto",
                   justifyContent: "center",
                   color: theme.palette.primary.main, // Default color
-                  transition: "color 0.3s ease", // Smooth color transition
+                  transition: 'color 0.3s, transform 0.3s', // Smooth color transition
                 }}>
                 {item.icon}
               </ListItemIcon>
