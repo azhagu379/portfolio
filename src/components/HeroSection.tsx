@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Typography, Button, useTheme } from '@mui/material';
 import { motion } from 'framer-motion';
+import { Typewriter } from 'react-simple-typewriter';
 
 const HeroSection: React.FC = () => {
   const theme = useTheme();
@@ -33,13 +34,38 @@ const HeroSection: React.FC = () => {
           Hi, I&apos;m <span style={{ color: '#FFD700' }}>Alagappan</span>
         </Typography>
         <Typography
+         component={motion.h1}
+         variant="h2"
+         gutterBottom
+         color={theme.palette.primary.main}
+         initial={{ opacity: 0, y: 20 }}
+         animate={{ opacity: 1, y: 0 }}
+         transition={{ duration: 0.8 }}
+        >
+          <Typewriter
+            words={[
+              'Software Engineer 👨‍💻',
+              'Java Specialist ☕',
+              'Web Developer 🌐 ',
+              'Full Stack Developer 🛠️ ',
+            ]}
+            loop={0} // Infinite loop
+            cursor
+            cursorStyle="_"
+            typeSpeed={80}
+            deleteSpeed={60}
+            delaySpeed={1200}
+          />
+        </Typography>
+        <Typography
           component={motion.h2}
           variant="h5"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
         >
-&#128075;  a Software Engineer with 2.5 years of experience as a Full Stack Developer. &#9749;  I specialize in building scalable, secure, and responsive applications. &#127919; With a Master&#39;s in Computer Applications, I enjoy solving complex problems and creating impactful digital solutions. &#128640;
+👋 I am a Software Engineer with 2.5 years of experience as a Full Stack Developer. ☕ I specialize in building scalable, secure, and responsive applications.
+🎯 Holding a Master&apos;s degree in Computer Applications, I thrive on solving complex problems and creating impactful digital solutions. 🚀
 </Typography>
         <Box sx={{ mt: 3 }}>
           {/* Hire Me Button */}
